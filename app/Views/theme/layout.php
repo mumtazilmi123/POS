@@ -13,14 +13,19 @@
   <link rel="stylesheet" href="<?= base_url('assets')?>/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url('assets')?>/dist/css/adminlte.min.css">
+  <!-- jQuery -->
+  <script src="<?= base_url('assets')?>/plugins/jquery/jquery.min.js"></script>
+  <!-- css -->  
+  <link rel="stylesheet" href="<?= base_url('assets/plugins/sweetalert2/sweetalert2.min.css')?>">
+  <script src="<?= base_url('assets/plugins/sweetalert2/sweetalert2.all.min.js')?>"></script>
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="<?= base_url('assets')?>/dist/img/std.png" alt="AdminLTELogo" height="200" width="250">
-  </div>
+  <!-- <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__wobble" src="/dist/img/std.png" alt="AdminLTELogo" height="200" width="250">
+  </div> -->
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-dark">
@@ -174,8 +179,6 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-<!-- jQuery -->
-<script src="<?= base_url('assets')?>/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="<?= base_url('assets')?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->

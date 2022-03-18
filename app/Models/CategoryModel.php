@@ -10,4 +10,9 @@ class CategoryModel extends Model
     protected $primaryKey = 'ctg_id';
 
     protected $allowedFields = ['ctg_id', 'ctg_name'];
+
+    public function searchCategory($search)
+    {
+        return $this->table('categories')->like('ctg_id', 'ctg_name');
+    }
 }
