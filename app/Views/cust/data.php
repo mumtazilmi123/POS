@@ -25,13 +25,13 @@ Pengelolaan Kategori
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <form method="POST" action="/category/index">
+            <form method="POST" action="/cust/index">
                 <?= csrf_field(); ?>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Cari Nama Kategori" name="carikategori"
+                    <input type="text" class="form-control" placeholder="Cari Nama Customers" name="caricust"
                         autofocus value="<?= $cari; ?>">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit" name="tombolkategori">Cari</button>
+                        <button class="btn btn-primary" type="submit" name="tombolcust">Cari</button>
                     </div>
                 </div>
             </form>
@@ -40,8 +40,9 @@ Pengelolaan Kategori
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Kategori</th>
-                        <th>Jumlah Brand</th>
+                        <th>Nama Customers</th>
+                        <th>No Hp</th>
+                        <th>Alamat</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -50,19 +51,20 @@ Pengelolaan Kategori
                 <tbody>
                     <?php 
                     $nomor = 1 + (($nohalaman - 1) * 6);
-                    foreach ($datakategori as $row) :
+                    foreach ($datacust as $row) :
                     ?>
                     <tr>
                         <td><?= $nomor++; ?></td>
-                        <td><?= $row['ctg_name']; ?></td>
-                        <td><?= $row['ctg_brand'];?></td>
+                        <td><?= $row['cust_name']; ?></td>
+                        <td><?= $row['cust_phone']; ?></td>
+                        <td><?= $row['cust_address']; ?></td>
                         <td>
-                            <button type="button" class="btn btn-danger btn-sm" title="Hapus Kategori"
-                                onclick="hapus('<?= $row['ctg_id'] ?>','<?= $row['ctg_name'] ?>', '<?= $row['ctg_brand'] ?>')">
+                            <button type="button" class="btn btn-danger btn-sm" title="Hapus Customer"
+                                onclick="hapus('<?= $row['cust_id'] ?>','<?= $row['cust_name'] ?>', '<?= $row['cust_phone'] ?>','<?= $row['cust_address'] ?>')">
                                 <i class="fa fa-trash-alt"></i>
                             </button>
-                            <button type="button" class="btn btn-info btn-sm" title="Edit Kategori"
-                                onclick="edit('<?= $row['ctg_id'] ?>')">
+                            <button type="button" class="btn btn-info btn-sm" title="Edit Customer"
+                                onclick="edit('<?= $row['cust_id'] ?>')">
                                 <i class="fa fa-pencil-alt"></i>
                             </button>
                         </td>
@@ -72,7 +74,7 @@ Pengelolaan Kategori
             </table>
 
             <div class="float-center">
-                <?= $pager->links('category', 'paging_data'); ?>
+                <?= $pager->links('cust', 'paging_data'); ?>
             </div>
         </div>
 
@@ -83,8 +85,8 @@ Pengelolaan Kategori
 <script>
 function hapus(id, name) {
     Swal.fire({
-        title: 'Hapus Kategori',
-        html: `Yakin hapus kategori <strong>${name}</strong> ini ?`,
+        title: 'Hapus Customer',
+        html: `Yakin hapus Customer <strong>${name}</strong> ini ?`,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -95,9 +97,9 @@ function hapus(id, name) {
         if (result.isConfirmed) {
             $.ajax({
                 type: "post",
-                url: "<?= site_url('category/hapus') ?>",
+                url: "<?= site_url('cust/hapus') ?>",
                 data: {
-                    idkategori: id
+                    idcust: id
                 },
                 dataType: "json",
                 success: function(response) {
@@ -116,16 +118,16 @@ function hapus(id, name) {
 function edit(id) {
     $.ajax({
         type: "post",
-        url: "<?= site_url('category/formEdit') ?>",
+        url: "<?= site_url('cust/editcust') ?>",
         data: {
-            idkategori: id
+            idcust: id
         },
         dataType: "json",
         success: function(response) {
             if (response.data) {
                 $('.viewmodal').html(response.data).show();
                 $('#modalformedit').on('shown.bs.modal', function(event) {
-                    $('#namakategori').focus();
+                    $('#namacust').focus();
                 });
                 $('#modalformedit').modal('show');
             }
@@ -142,7 +144,7 @@ $(document).ready(function() {
         e.preventDefault();
 
         $.ajax({
-            url: "<?= site_url('category/formTambah') ?>",
+            url: "<?= site_url('cust/addcust') ?>",
             dataType: "json",
             type: 'post',
             data: {
@@ -151,10 +153,10 @@ $(document).ready(function() {
             success: function(response) {
                 if (response.data) {
                     $('.viewmodal').html(response.data).show();
-                    $('#modaltambahkategori').on('shown.bs.modal', function(event) {
-                        $('#namakategori').focus();
+                    $('#modaltambahcust').on('shown.bs.modal', function(event) {
+                        $('#namacust').focus();
                     });
-                    $('#modaltambahkategori').modal('show');
+                    $('#modaltambahcust').modal('show');
                 }
             },
             error: function(xhr, thrownError) {

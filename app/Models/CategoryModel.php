@@ -9,10 +9,10 @@ class CategoryModel extends Model
     protected $table      = 'categories';
     protected $primaryKey = 'ctg_id';
 
-    protected $allowedFields = ['ctg_id', 'ctg_name'];
+    protected $allowedFields = ['ctg_id', 'ctg_name', 'ctg_brand'];
 
-    public function searchCategory($search)
+    public function cariData($cari)
     {
-        return $this->table('categories')->like('ctg_id', 'ctg_name');
+        return $this->table('kategori')->like('ctg_name', $cari);
     }
 }
