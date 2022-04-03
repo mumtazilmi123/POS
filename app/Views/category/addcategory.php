@@ -42,7 +42,7 @@ $(document).ready(function() {
             beforeSend: function(e) {
                 $('.tombolSimpan').prop('disabled', true);
                 $('.tombolSimpan').html('<i class="fa fa-spin fa-spinner"></i>')
-            },
+            },  
             success: function(response) {
                 let aksi = $('#aksi').val();
                 if (response.sukses) {

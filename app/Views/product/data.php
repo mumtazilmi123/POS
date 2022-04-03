@@ -23,7 +23,38 @@ Pengelolaan Data Produk
         </div>
     </div>
     <div class="card-body">
-        
+        <div class="table-responsive">
+            <?= fprm_open('product/index')?>
+                <?= csrf_field(); ?>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Cari Nama Produk" name="cariproduk"
+                        >
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit" name="tombolproduk">Cari</button>
+                    </div>
+                </div>
+            <?= form_close();?>
+            <table class="table table-md table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Barcode</th>
+                        <th>Nama Produk</th>
+                        <th>Kategori</th>
+                        <th>Satuan</th>
+                        <th>Stok</th>
+                        <th>Harga Jual (Rp)</th>
+                        <th>Harga Beli (Rp)</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                    
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 

@@ -20,8 +20,11 @@ class ProductModel extends Model
         'img',
     ];
 
-    // public function cariData($cari)
-    // {
-    //     return $this->table('kategori')->like('ctg_name', $cari);
-    // }
+    public function __construct()
+    {
+        $this->db = db_connect();
+    }
+    public function cariDatta($cari){
+        return $this->db->table('product')->join('categories', pr);
+    }
 }
