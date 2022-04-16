@@ -15,26 +15,26 @@ class Product extends BaseController
     }
     public function index()
     {
-        $tombolCari = $this->request->getPost('tombolproduk');
+        // $tombolCari = $this->request->getPost('tombolproduk');
 
-        if (isset($tombolCari)) {
-            $cari = $this->request->getPost('cariproduk');
-            session()->set('cariproduk', $cari);
-            redirect()->to('/product/index');
-        } else {
-            $cari = session()->get('cariproduk');
-        }
+        // if (isset($tombolCari)) {
+        //     $cari = $this->request->getPost('cariproduk');
+        //     session()->set('cariproduk', $cari);
+        //     redirect()->to('/product/index');
+        // } else {
+        //     $cari = session()->get('cariproduk');
+        // }
 
-        $dataproduk = $cari ? $this->produk ->cariData($cari) : $this->produk ;
+        // $dataproduk = $cari ? $this-> produk ->cariData($cari) : $this->produk;
 
-        $noHalaman = $this->request->getVar('page_produk') ? $this->request->getVar('page_produk') : 1;
-        $data = [
-            'dataproduk' => $dataproduk->paginate(6, 'product'),
-            'pager' => $this->produk ->pager,
-            'nohalaman' => $noHalaman,
-            'cari' => $cari
-        ];
-
+        // $nohalaman = $this->request->getVar('page_product') ? $this->request->getVar('page_product') : 1;
+        // $data = [
+        //     'dataproduk' => $dataproduk->paginate(10, 'product'),
+        //     'pager' => $this->produk ->pager,
+        //     'nohalaman' => $nohalaman,
+        //     'cari' => $cari
+        // ];
+ 
         return view('product/data');
     }
     

@@ -20,11 +20,11 @@ class ProductModel extends Model
         'img',
     ];
 
-    public function __construct()
-    {
-        $this->db = db_connect();
-    }
+    // public function __construct()
+    // {
+    //     $this->db = db_connect();
+    // }
     public function cariDatta($cari){
-        return $this->db->table('product')->join('categories', pr);
+        return $this->table('product')->like('barcode', $cari)->Like('namaproduk', $cari);
     }
 }

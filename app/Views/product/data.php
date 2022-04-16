@@ -24,7 +24,7 @@ Pengelolaan Data Produk
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <?= fprm_open('product/index')?>
+            <?= form_open('product/index')?>
                 <?= csrf_field(); ?>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Cari Nama Produk" name="cariproduk"
@@ -50,10 +50,26 @@ Pengelolaan Data Produk
                 </thead>
                 <tbody>
                     <?php 
-                    
-                    ?>
+
+                        $nomor = 1 ;
+                        foreach ($dataproduk as $row) :
+                    ?>  
+                    <tr>
+                        <td><?= $nomor++;?></td>
+                        <td><?= $row['idbarcode'];?></td>
+                        <td><?= $row['pr_name'];?></td>
+                        <td><?= $row['ctg_name'];?></td>
+                        <td><?= $row['u_name'];?></td>
+                        <td style="text-align: right;"><?= number_format($row['sell_prc'], 2,",",".")?></td>
+                        <td style="text-align: right;"><?= number_format($row['purchase_prc'], 2,",",".")?></td>
+                        <td style="text-align: right;"><?= number_format($row['readystock'], 0,",",".")?></td>
+                    </tr>
+                    <?php endforeach;?>
                 </tbody>
             </table>
+            <div class="float-left">
+                <?= $pager->links('product', 'product_pagination'); ?>
+            </div>
         </div>
     </div>
 </div>

@@ -96,8 +96,8 @@ class Units extends BaseController
 
             $ambildatasatuan =$this->unit->find($idsatuan);
             $data = [
-                'idsatuan' => $idsatuan,
-                'namasatuan' => $ambildatasatuan['u_id']
+                'idsatuan'   => $idsatuan,
+                'namasatuan' => $ambildatasatuan ['u_name'],
             ];
 
             $msg = [
