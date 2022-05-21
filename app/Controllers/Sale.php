@@ -11,6 +11,21 @@ class Sale extends BaseController
 
     public function input()
     {
+        $tgl = $this->request->getPost('tanggal');
+        $query = $this->db->query("SELECT MAX(sale_faktur) AS nofaktur FROM penjualan WHERE DATE_FORMAT(sale_tgl, '%Y-%m-%d') = '$tgl'");
+        $hasil = $query->getRowArray();
+        $data = $hasil['nofaktur'];
+        $nofaktur = $this->request->getVar('nofaktur');
+
+        $lastNoUrut = substr($data, -4);
+
+        // Penambahan No Urut
+        $nextNoUrut = intval($lastNoUrut)+1;
+
+        $fakturPenjualan = 'J' . date('dmy', strtotime($tgl)) . sprintf("%04s", $nextNoUrut);
+        $data = [
+            'nofaktur' => $fakturPenjualan,
+        ];
         return view('sale/input');
     } 
 
