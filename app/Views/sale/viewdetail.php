@@ -18,14 +18,14 @@
 
             <tr> 
             <td><?= $nomor++;?></td>
-            <td><?= $kode = $r['kode'];?></td>
-            <td><?= $produk = $r['produk'];?></td>
-            <td><?= $qty = $r['qty'];?></td>
-            <td><?= $hrgjual = $r['hrgjual'];?></td>
-            <td><?= $subtotal = $r['subtotal'];?></td>
+            <td><?= $r['kode'];?></td>
+            <td><?= $r['produk'];?></td>
+            <td><?= $r['qty'];?></td>
+            <td style ="text-align: right;"><?= number_format($r['hargajual'], 0,",", ".");?></td>
+            <td style ="text-align: right;"><?= number_format($r['subtotal'], 0,",", ".");?></td>
             </tr>
-            ?>
+            
+        <?php endforeach;?>
         
-        ?>
     </tbody>
 </table>
