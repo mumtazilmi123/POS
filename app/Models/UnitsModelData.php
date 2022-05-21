@@ -8,7 +8,7 @@ use CodeIgniter\Model;
 class UnitsModelData extends Model
 {
 
-    protected $table = "units";
+    protected $table = "satuan";
     protected $column_order = array(null, 'u_name', null);
     protected $column_search = array('u_name');
     protected $order = array('u_id' => 'asc');

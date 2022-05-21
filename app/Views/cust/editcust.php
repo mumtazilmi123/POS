@@ -13,17 +13,17 @@
             <div class="form-group">
                     <label for="">Nama Customer</label>
                     <input type="text" name="namacust" id="namacust" class="form-control form-control-sm"
-                        required>
+                        required value="<?= $namacust; ?>">
                 </div>
                 <div class="form-group">
                     <label for="">No HP</label>
                     <input type="text" name="phone" id="phone" class="form-control form-control-sm"
-                        required>
+                        required value="<?= $phone; ?>">
                 </div>
                 <div class="form-group">
                     <label for="">Alamat</label>
                     <input type="text" name="address" id="address" class="form-control form-control-sm"
-                        required>
+                        required value="<?= $address; ?>">
                 </div>
             </div>
             <div class="modal-footer">

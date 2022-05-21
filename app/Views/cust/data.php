@@ -55,16 +55,16 @@ Pengelolaan Kategori
                     ?>
                     <tr>
                         <td><?= $nomor++; ?></td>
-                        <td><?= $row['cust_name']; ?></td>
-                        <td><?= $row['cust_phone']; ?></td>
-                        <td><?= $row['cust_address']; ?></td>
+                        <td><?= $row['cs_name']; ?></td>
+                        <td><?= $row['cs_phone']; ?></td>
+                        <td><?= $row['cs_address']; ?></td>
                         <td>
                             <button type="button" class="btn btn-danger btn-sm" title="Hapus Customer"
-                                onclick="hapus('<?= $row['cust_id'] ?>','<?= $row['cust_name'] ?>', '<?= $row['cust_phone'] ?>','<?= $row['cust_address'] ?>')">
+                                onclick="hapus('<?= $row['cs_code'] ?>','<?= $row['cs_name'] ?>', '<?= $row['cs_phone'] ?>','<?= $row['cs_address'] ?>')">
                                 <i class="fa fa-trash-alt"></i>
                             </button>
                             <button type="button" class="btn btn-info btn-sm" title="Edit Customer"
-                                onclick="edit('<?= $row['cust_id'] ?>')">
+                                onclick="edit('<?= $row['cs_code'] ?>')">
                                 <i class="fa fa-pencil-alt"></i>
                             </button>
                         </td>

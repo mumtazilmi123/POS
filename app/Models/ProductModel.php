@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class ProductModel extends Model
 {
-    protected $table      = 'products';
+    protected $table      = 'produk';
     protected $primaryKey = 'idbarcode';
 
     protected $allowedFields = [
@@ -15,16 +15,12 @@ class ProductModel extends Model
         'pr_uid',
         'pr_ctgid',
         'readystock',
-        'purchase_prc',
-        'sell_prc',
-        'img',
+        'harga_beli',
+        'harga_jual',
     ];
 
-    // public function __construct()
-    // {
-    //     $this->db = db_connect();
-    // }
-    public function cariDatta($cari){
-        return $this->table('product')->like('barcode', $cari)->Like('namaproduk', $cari);
+
+    public function cariData($cari){
+        return $this->table('produk')->join('kategori','ctg_id=pr_ctgid')->join('satuan','u_id=pr_uid')->like('idbarcode', $cari)->Like('pr_name', $cari);
     }
 }

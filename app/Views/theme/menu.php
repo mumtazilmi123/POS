@@ -51,11 +51,23 @@
         </p>
     </a>
 </li>
+
+<li class="nav-header">Transaksi</li>
 <li class="nav-item">
-    <a href="<?= site_url('/index')?>" class="nav-link">
+    <a href="<?= site_url('sale/index')?>" class="nav-link">
         <i class="nav-icon fas fa-money-bill"></i>
         <p>
             Pembayaran
+        </p>
+    </a>
+</li>
+
+<li class="nav-header">Logout</li>
+<li class="nav-item">
+    <a href="<?= site_url('/login')?>" class="nav-link">
+        <i class="nav-icon fas fa-chevron-circle-left"></i>
+        <p>
+            Keluar
         </p>
     </a>
 </li>

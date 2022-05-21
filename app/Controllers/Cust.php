@@ -56,9 +56,9 @@ class Cust extends BaseController
             $address = $this->request->getVar('address');
 
             $this->cust ->insert([
-                'cust_name'     => $namacust,
-                'cust_phone'    => $phone,
-                'cust_address'  => $address
+                'cs_name'     => $namacust,
+                'cs_phone'    => $phone,
+                'cs_address'  => $address
             ]);
 
             $msg = [
@@ -90,9 +90,9 @@ class Cust extends BaseController
             $ambildatacust = $this->cust ->find($idcust);
             $data = [
                 'idcust'        => $idcust,
-                'namacust'      => $ambildatacust['cust_name'],
-                'phone'         => $ambildatacust['cust_phone'],
-                'address'        => $ambildatacust['cust_address']
+                'namacust'      => $ambildatacust['cs_name'],
+                'phone'         => $ambildatacust['cs_phone'],
+                'address'        => $ambildatacust['cs_address']
             ];
 
             $msg = [
@@ -111,9 +111,9 @@ class Cust extends BaseController
             $address = $this->request->getVar('address');
 
             $this->cust ->update($idcust, [
-                'cust_name'     => $namacust,
-                'cust_phone'    => $phone,
-                'cust_address'  => $address
+                'cs_name'     => $namacust,
+                'cs_phone'    => $phone,
+                'cs_address'  => $address
             ]);
 
             $msg = [

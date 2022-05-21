@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class CustModel extends Model
 {
-    protected $table      = 'customers';
-    protected $primaryKey = 'cust_id';
+    protected $table      = 'pelanggan';
+    protected $primaryKey = 'cs_code';
 
-    protected $allowedFields = ['cust_id', 'cust_name', 'cust_phone',  'cust_address'];
+    protected $allowedFields = ['cs_code', 'cs_name', 'cs_phone',  'cs_address'];
 
     public function cariData($cari)
     {
-        return $this->table('customers')->like('cust_name', $cari);
+        return $this->table('pelanggan')->like('cs_name', $cari);
     }
 }

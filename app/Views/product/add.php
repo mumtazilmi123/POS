@@ -93,9 +93,8 @@
                 <div class="invalid-feedback errorHargaJual" style="display: none;">
                 </div>
             </div>
-
         </div>
-        <div class="form-group row">
+        <!-- <div class="form-group row">
             <label for="uploadgambar" class="col-sm-4 col-form-label">Upload Gambar</label>
             <div class="col-sm-4">
                 <input type="file" name="uploadgambar" id="uploadgambar" class="form-control form-control-md"
@@ -103,7 +102,7 @@
                 <div class="invalid-feedback errorUpload" style="display: none;">
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="form-group row">
             <label for="uploadgambar" class="col-sm-4 col-form-label"></label>
             <div class="col-sm-4">

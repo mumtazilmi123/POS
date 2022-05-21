@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ProductModel;
 
-class Product extends BaseController
+class Produk extends BaseController
 {
     public function __construct()
     {
@@ -13,26 +13,16 @@ class Product extends BaseController
     }
     public function index()
     {
-        $tombolCari = $this->request->getPost('tombolproduk');
 
-        if (isset($tombolCari)) {
-            $cari = $this->request->getPost('cariproduk');
-            session()->set('cariproduk', $cari);
-            redirect()->to('/product/index');
-        } else {
-            $cari = session()->get('cariproduk');
-        }
-
-        $dataProduk = $cari ? $this->produk->cariData($cari) : $this->produk;
-
-        $noHalaman = $this->request->getVar('page_produk') ? $this->request->getVar('page_produk') : 1;
-        $data = [
-            'dataproduk' => $dataProduk->paginate(6, 'produk'),
-            'pager' => $this->produk ->pager,
-            'nohalaman' => $noHalaman,
-            'cari' => $cari
-        ];
-        return view('product/data', $data);
+        // $data = [
+        //     'dataproduk' => $this->produk->join('kategori', 'produk_katid=katid')
+        //         ->join('satuan', 'produk_satid=satid')
+        //         ->paginate(10, 'produk'),
+        //     'pager' => $this->produk->pager,
+        //     // 'nohalaman' => $noHalaman,
+        //     // 'cari' => $cari
+        // ];
+        return view('product/data');
     }
 
     public function add()
@@ -79,7 +69,7 @@ class Product extends BaseController
     public function simpandata()
     {
         if ($this->request->isAJAX()) {
-            $barcode    = $this->request->getVar('barcode');
+            $kodebarcode    = $this->request->getVar('barcode');
             $namaproduk     = $this->request->getVar('namaproduk');
             $stok           = $this->request->getVar('stok');
             $kategori       = $this->request->getVar('kategori');
@@ -90,9 +80,9 @@ class Product extends BaseController
             $validation =  \Config\Services::validation();
 
             $doValid = $this->validate([
-                'barcode' => [
-                    'label' => ' Barcode',
-                    'rules' => 'is_unique[produk.idbarcode]|required',
+                'kodebarcode' => [
+                    'label' => 'Kode Barcode',
+                    'rules' => 'is_unique[produk.kodebarcode]|required',
                     'errors' => [
                         'is_unique' => '{field} sudah ada, coba dengan kode yang lain',
                         'required' => '{field} tidak boleh kosong'
@@ -145,26 +135,27 @@ class Product extends BaseController
             if (!$doValid) {
                 $msg = [
                     'error' => [
-                        'errorBarcode' => $validation->getError('barcode'),
+                        'errorKodeBarcode' => $validation->getError('barcode'),
                         'errorNamaProduk' => $validation->getError('namaproduk'),
                         'errorStok' => $validation->getError('stok'),
                         'errorKategori' => $validation->getError('kategori'),
                         'errorSatuan' => $validation->getError('satuan'),
                         'errorHargaBeli' => $validation->getError('hargabeli'),
                         'errorHargaJual' => $validation->getError('hargajual'),
+                        'errorUpload' => $validation->getError('uploadgambar')
                     ]
                 ];
             } 
 
                 $this->produk->insert([
-                    'idbarcode' => $barcode,
-                    'pr_name' => $namaproduk,
-                    'pr_uid' => $satuan,
-                    'pr_ctgid' => $kategori,
-                    'readystock' => $stok,
-                    'harga_beli' => $hargabeli,
-                    'harga_jual' => $hargajual,
-                    
+                    'barcode' => $barcode,
+                    'namaproduk' => $namaproduk,
+                    'produk_satid' => $satuan,
+                    'produk_katid' => $kategori,
+                    'stok_tersedia' => $stok,
+                    'hargabeli' => $hargabeli,
+                    'hargajual' => $hargajual,
+                    'gambar' => $pathGambar
                 ]);
 
                 $msg = [
@@ -174,17 +165,5 @@ class Product extends BaseController
 
             echo json_encode($msg);
         }
-
-        public function hapus(){
-            if($this->request->isAJAX()){
-                $barcode = $this->request->getPost('id');
-
-                $this->produk->delete($barcode);
-                $msg = [
-                    'suskes' => 'Produk berhasil dihapus'
-                ]; 
-
-                echo json_encode($msg);
-            }
-        }
     }
+}
