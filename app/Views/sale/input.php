@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label for="nofaktur">Faktur</label>
                     <input type="text" class="form-control form-control-sm" style="color:red;font-weight:bold;"
-                        name="nofaktur" value='<?= $nofaktur ?>' id="nofaktur" readonly>
+                        name="nofaktur"  readonly>
                 </div>
             </div>
             <div class="col-md-3">
