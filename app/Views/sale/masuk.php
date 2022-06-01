@@ -5,6 +5,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
+
 <div class="card card-default color-palette-box">
     <div class="card-header">
         <h3 class="card-title">
@@ -61,15 +62,15 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="kodebarcode">Kode Produk</label>
-                    <input type="text" class="form-control form-control-sm" name="kodebarcode" id="kodebarcode"
+                    <input type="text"  class="form-control form-control-sm" name="kodebarcode" id="kodebarcode"
                         autofocus>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="">Nama Produk</label>
-                    <input type="text" style="font-weight: bold; font-size: 16pt" class="form-control form-control-sm"
-                        name="namaproduk" id="namaproduk" readonly>
+                    <input type="text" style="font-weight: bold; font-size: 16pt" class="form-control form-control-sm" name="namaproduk" id="namaproduk"
+                        readonly>
                 </div>
             </div>
             <div class="col-md-3">
@@ -96,98 +97,18 @@
 <div class="viewmodal" style="display:none;"></div>
 
 <script>
-    function dataDetailPenjualan() {
-        $.ajax({
-            type: "post",
-            url: "<?= site_url('sale/dataDetail') ?>",
-            data: {
-                nofaktur: $('#nofaktur').val()
-            },
-            dataType: "json",
-            beforeSend: function () {
-                $('.dataDetailPenjualan').html('<i class="fa fa-spin fa-spinner"></i>');
-            },
-
-            success: function (response) {
-                if (response.data) {
-                    $('.dataDetailPenjualan').html(response.data);
-
-                }
-            },
-            error: function (response) {
-                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-            }
-        });
-
-    //     function cekKode() {
-    //         let kode = $('#kodebarcode').val();
-
-    //         if (kode.lenght == 0) {
-    //             $.ajax({
-    //                 url: "<?= site_url('sale/viewDataProduk') ?>",
-    //                 dataType: "json",
-    //                 success: function (response) {
-    //                     $('.viewmodal').html(response.viewmodal).show();
-
-    //                     $('#modalproduk').modal('show');
-    //                 },
-    //                 error: function (response) {
-    //                     alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-    //                 }
-    //             });
-    //         } else {
-    //             $.ajax({
-    //                     type: "post",
-    //                     url: "<?= site_url('sale/simpanTemp')?>",
-    //                     data: {
-    //                         kodebarcode : kode,
-    //                         namaproduk: $('#namaproduk').val(),
-    //                         jumlah: $('#jumlah').val()
-    //                         nofaktur: $('#nofaktur').val(),
-    //                     },
-    //                 },
-    //                 dataType: "json",
-    //                 success: function (response) {
-    //                     if (response.totaldata == 'banyak') {
-    //                         $.ajax({
-    //                             url: "<?= site_url('sale/viewDataProduk') ?>",
-    //                             dataType: "json",
-    //                             data : {
-    //                                 keyword: kode
-    //                             },
-    //                             type = "post",
-    //                             success: function (response) {
-    //                                 $('.viewmodal').html(response.viewmodal).show();
-    //                                 $('#modalproduk').modal('show');
-    //                             },
-    //                             error: function (response) {
-    //                                 alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-    //                             }
-    //                         });
-    //                     }
-    //                 },
-    //                 error: function (response) {
-    //                     alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-    //                 }
-    //             });
-    //     }
-
-    // }
-
-
     $(document).ready(function () {
         $('body').addClass('sidebar-collapse');
-
+        
         dataDetailPenjualan();
 
-        $('#kodebarcode').keydown(function (e) {
-            if (e.keyCode == 13) {
+        $('#kodebarcode').keydown(function (e) { 
+            if(e.keyCode == 13){
                 e.preventDefault();
                 cekKode();
             }
-
+            
         });
     });
 </script>
-
 <?= $this->endSection() ?>

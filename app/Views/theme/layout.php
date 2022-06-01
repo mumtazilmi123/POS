@@ -18,6 +18,7 @@
   <!-- css -->  
   <link rel="stylesheet" href="<?= base_url('assets/plugins/sweetalert2/sweetalert2.min.css')?>">
   <script src="<?= base_url('assets/plugins/sweetalert2/sweetalert2.all.min.js')?>"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body class="hold-transition light-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -158,7 +159,7 @@
       <?= $this->renderSection('content')?>
     </section>
 
-    
+  </div>
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->

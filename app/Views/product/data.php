@@ -41,9 +41,9 @@ Pengelolaan Data Produk
                         <td>Nama Produk</td>
                         <td>Kategori</td>
                         <td>Satuan</td>
+                        <td>Stok</td>
                         <td>Harga Beli</td>
                         <td>Harga Jual</td>
-                        <td>Stok</td>
                         <td>Aksi</td>
                     </tr>
                 </thead>
@@ -62,7 +62,7 @@ Pengelolaan Data Produk
                         <td style="text-align: right;"><?= number_format($r['harga_beli'], 2, "," , ".");?></td>
                         <td style="text-align: right;"><?= number_format($r['harga_jual'],2, ",", ".");?></td>
                         <td>
-                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="hapus('<?= $r['idbarcode'] ?>','<?= $r['pr_name'] ?>', '<?= $r['ctg_name'] ?>')">
+                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="apus('<?= $r['idbarcode'] ?>','<?= $r['pr_name'] ?>', '<?= $r['pr_ctgid'] ?>')">
                                 <i class="fa fa-trash-alt"></i>
                             </button>
                             <button type="button" class="btn btn-outline-danger btn-sm">
@@ -107,6 +107,6 @@ Pengelolaan Data Produk
             });
         }
     })
-    }
+    };
 </script>
 <?= $this->endSection()?>

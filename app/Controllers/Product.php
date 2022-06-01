@@ -79,7 +79,7 @@ class Product extends BaseController
     public function simpandata()
     {
         if ($this->request->isAJAX()) {
-            $barcode    = $this->request->getVar('barcode');
+            $barcode        = $this->request->getVar('barcode');
             $namaproduk     = $this->request->getVar('namaproduk');
             $stok           = $this->request->getVar('stok');
             $kategori       = $this->request->getVar('kategori');
@@ -177,9 +177,9 @@ class Product extends BaseController
 
         public function hapus(){
             if($this->request->isAJAX()){
-                $barcode = $this->request->getPost('id');
+                $idbarcode = $this->request->getPost('id');
 
-                $this->produk->delete($barcode);
+                $this->produk->delete($idbarcode);
                 $msg = [
                     'suskes' => 'Produk berhasil dihapus'
                 ]; 
